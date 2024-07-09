@@ -5,18 +5,17 @@ on:
 
 env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
-  
-  AUTHOR_NAME: Jane Doe
-  AUTHOR_EMAIL: info@scribesecurity.com
-  AUTHOR_PHONE: 111-1111-11
-  SUPPLIER_NAME: Scribe-Security
-  SUPPLIER_URL: www.scribesecurity.com
-  SUPPLIER_EMAIL: info@scribesecurity.com
-  SUPPLIER_PHONE: 001-001-0011
-  USER_DATA: service-binding
-  COMPANY_CA: ${{ secrets.COMPANY_CA }}
-  SIGNER_CERT: ${{ secrets.SIGNER_CERT }}
-  SIGNER_KEY: ${{ secrets.SIGNER_KEY }}
+  DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+  PRODUCT_VERSION: 0.4.12
+  APP_NAME: A-Product-Key
+  VALINT_BOM_AUTHOR_NAME: Jane Doe
+  VALINT_BOM_AUTHOR_EMAIL: gc@scribesecurity.com
+  VALINT_BOM_AUTHOR_PHONE: 052-9000000
+  VALINT_BOM_SUPPLIER_NAME: Scribe-Security
+  VALINT_BOM_SUPPLIER_URL: www.scribesecurity.com
+  VALINT_BOM_SUPPLIER_EMAIL: info@scribesecurity.com
+  VALINT_BOM_SUPPLIER_PHONE: 001-001-0011
+  GITHUB_RUN_NUM: ${{ github.run_number }}
 
   
 
@@ -39,19 +38,11 @@ jobs:
         target: 'git:.'
         scribe-enable: true
         components: packages,files,dep
-        product-key: "scribe-demo-prod-v13"
-        scribe-client-id: ${{ secrets.CLIENT_ID }}
+        product-key: ${{ env.APP_NAME }}
         scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
         format: attest
-        product-version: "version_prod_sprint37_01"
-        author-name: $AUTHOR_NAME
-        author-email: $AUTHOR_EMAIL
-        author-phone: $AUTHOR_PHONE
-        supplier-name: $SUPPLIER_NAME
-        supplier-url: $SUPPLIER_URL
-        supplier-email: $SUPPLIER_EMAIL 
-        supplier-phone: $SUPPLIER_PHONE
-
+        product-version: $${{ env.PRODUCT_VERSION }}
+        
     - name: Build the Docker image
       run: docker build . -t scribe-demo-product:${{ github.sha }}
 
@@ -60,17 +51,10 @@ jobs:
       with:
         target: 'docker:scribe-demo-product:${{ github.sha }}'
         scribe-enable: true
-        
-        product-key: "scribe-demo-prod-v13"
-        scribe-client-id: ${{ secrets.CLIENT_ID }}
+        components: packages,files,dep
+        product-key: ${{ env.APP_NAME }}
         scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
         format: attest
-        product-version: "version_prod_sprint37_01"
-        force: true
-        author-name: $AUTHOR_NAME
-        author-email: $AUTHOR_EMAIL
-        author-phone: $AUTHOR_PHONE
-        supplier-name: $SUPPLIER_NAME
-        supplier-url: $SUPPLIER_URL
-        supplier-email: $SUPPLIER_EMAIL 
-        supplier-phone: $SUPPLIER_PHONE
+        product-version: $${{ env.PRODUCT_VERSION }}
+        
+        
