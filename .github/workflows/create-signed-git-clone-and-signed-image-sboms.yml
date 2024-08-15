@@ -56,5 +56,17 @@ jobs:
         scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
         format: attest
         product-version: $${{ env.PRODUCT_VERSION }}
+
+    - name: Generate SLSA provenance record
+      uses: scribe-security/action-slsa@master
+      with:
+        target: 'docker:scribe-demo-product:${{ github.sha }}'
+        scribe-enable: true
+        components: packages,files,dep
+        product-key: ${{ env.APP_NAME }}
+        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        format: attest
+        product-version: $${{ env.PRODUCT_VERSION }}
+
         
         
