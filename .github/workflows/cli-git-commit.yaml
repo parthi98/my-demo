@@ -30,7 +30,6 @@ jobs:
          --components packages,files,dep \
          --format attest \
          --scribe.enable \
-         --scribe.client-id $SCRIBE_CLIENT_ID \
          --scribe.client-secret $SCRIBE_CLIENT_SECRET \
          --product-key $PRODUCT_KEY \
          --attest.default x509 \
