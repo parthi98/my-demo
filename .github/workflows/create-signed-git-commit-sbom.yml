@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
   PRODUCT_VERSION: 0.4.13
-  APP_NAME: A-Product-Key
+  APP_NAME: Product-Orange
   AUTHOR_NAME: Jane Doe
   AUTHOR_EMAIL: info@scribesecurity.com
   AUTHOR_PHONE: 111-1111-11
