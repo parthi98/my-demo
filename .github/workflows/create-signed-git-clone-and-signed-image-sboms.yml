@@ -7,7 +7,7 @@ env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
   DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
   PRODUCT_VERSION: 0.4.13
-  APP_NAME: A-Product-Key
+  APP_NAME: Product-Orange
   VALINT_BOM_AUTHOR_NAME: Jane Doe
   VALINT_BOM_AUTHOR_EMAIL: gc@scribesecurity.com
   VALINT_BOM_AUTHOR_PHONE: 052-9000000
