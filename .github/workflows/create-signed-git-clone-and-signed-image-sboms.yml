@@ -6,7 +6,7 @@ on:
 env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
   DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
-  PRODUCT_VERSION: 0.4.14
+  PRODUCT_VERSION: 0.4.15
   APP_NAME: Product-Orange
   VALINT_BOM_AUTHOR_NAME: Jane Doe
   VALINT_BOM_AUTHOR_EMAIL: gc@scribesecurity.com
@@ -57,16 +57,16 @@ jobs:
         format: attest
         product-version: $${{ env.PRODUCT_VERSION }}
 
- #   - name: Generate SLSA provenance record
- #     uses: scribe-security/action-slsa@master
- #     with:
- #       target: 'docker:scribe-demo-product:${{ github.sha }}'
- #       scribe-enable: true
- #       components: packages,files,dep
- #       product-key: ${{ env.APP_NAME }}
- #       scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
- #       format: attest
- #       product-version: $${{ env.PRODUCT_VERSION }}
+    - name: Generate SLSA provenance record
+      uses: scribe-security/action-slsa@master
+      with:
+        target: 'docker:scribe-demo-product:${{ github.sha }}'
+        scribe-enable: true
+        components: packages,files,dep
+        product-key: ${{ env.APP_NAME }}
+        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        format: statement
+        product-version: $${{ env.PRODUCT_VERSION }}
 
         
         
