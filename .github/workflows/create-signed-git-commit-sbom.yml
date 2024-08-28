@@ -7,7 +7,7 @@ on:
 
 env:
   IMAGE_NAME: ${{ github.repository }}:${{ github.sha }}
-  PRODUCT_VERSION: 0.4.13
+  PRODUCT_VERSION: 0.4.14
   APP_NAME: Product-Orange
   AUTHOR_NAME: Jane Doe
   AUTHOR_EMAIL: info@scribesecurity.com
