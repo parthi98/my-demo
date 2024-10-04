@@ -39,7 +39,7 @@ jobs:
         scribe-enable: true
         components: packages,files,dep
         product-key: ${{ env.APP_NAME }}
-        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        scribe-client-secret: ${{ secrets.demo }}
         format: attest
         product-version: $${{ env.PRODUCT_VERSION }}
         
@@ -53,7 +53,7 @@ jobs:
         scribe-enable: true
         components: packages,files,dep
         product-key: ${{ env.APP_NAME }}
-        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        scribe-client-secret: ${{ secrets.demo }}
         format: attest
         product-version: $${{ env.PRODUCT_VERSION }}
 
@@ -64,7 +64,7 @@ jobs:
         scribe-enable: true
         components: packages,files,dep
         product-key: ${{ env.APP_NAME }}
-        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        scribe-client-secret: ${{ secrets.demo }}
         format: statement
         product-version: $${{ env.PRODUCT_VERSION }}
 
