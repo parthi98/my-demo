@@ -42,7 +42,7 @@ jobs:
         scribe-enable: true
         components: packages,files,dep
         product-key: ${{ env.APP_NAME}}
-        scribe-client-secret: ${{ secrets.CLIENT_SECRET }}
+        scribe-client-secret: ${{ secrets.demo }}
         label: is_git_commit
         format: attest
         product-version: ${{env.PRODUCT_VERSION }}
